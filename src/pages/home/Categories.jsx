@@ -18,8 +18,14 @@ import appstore from "../../assets/apps_store.webp";
 import supplier from "../../assets/supplier.webp";
 import { FaCheckCircle } from "react-icons/fa";
 function Categories() {
+  const handleplayButtonClick = () => {
+    window.open("https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow&pow_click_page_type=HP&pow_distinct_id=96148644", "_blank");
+  };
+const handleAppButtonClick = () => {
+  window.open("https://apps.apple.com/us/app/meesho-online-shopping/id1457958492", "_blank");
+};
   return (
-    <div className="container w-full  p-4 flex flex-col items-center gap-14 justify-center">
+    <div className="w-full flex flex-col items-center gap-14 justify-center my-10">
       <div className="flex">
         <h1 className="text-4xl font-bold">Top Categories to choose from</h1>
         <div></div>
@@ -113,14 +119,14 @@ function Categories() {
           with Zero Investment
         </h1>
         <div className="flex gap-3 mt-10">
-          <button className="w-[180px] h-[48px]">
+          <button className="w-[180px] h-[48px]" onClick={handleplayButtonClick}>
             <img
               src={playstore}
               alt="playstore"
               className="w-full h-full rounded-md"
             />
           </button>
-          <button className="w-[180px] h-[48px]">
+          <button className="w-[180px] h-[48px]" onClick={handleAppButtonClick}>
             <img
               src={appstore}
               alt="appstore"

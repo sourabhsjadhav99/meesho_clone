@@ -1,22 +1,23 @@
 import React from 'react';
 import './index.css'; // Ensure this import is present
-import Categories from './pages/home/Categories';
-import Cover from './pages/home/Cover';
-import ProductPage from './pages/home/ProductPage';
-import Filter from './pages/home/Filter';
-import ProductCard from './components/ProductCard';
+import Home from './pages/home/Home';
+import SingleProduct from './pages/product/SingleProduct';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="container">
-      <div>hii</div>
-      {/* <Cover />
-      <Categories /> */}
-      <ProductPage/>
-      <Filter/>
-      <ProductCard/>
+    <BrowserRouter>
 
-    </div>
+       <Routes>
+             <Route path="/" element={<Home />} />
+             <Route path="/:id" element={<SingleProduct/>} />
+
+         </Routes>
+         <Footer /> 
+
+    </BrowserRouter>
+
   );
 }
 
