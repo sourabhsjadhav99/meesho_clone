@@ -1,5 +1,5 @@
 import Filter from "./Filter";
-import Relevance from "./Relevance";
+// import Relevance from "./Relevance";
 import ProductList from "../../components/ProductList";
 function SortingProducts() {
   return (
@@ -8,7 +8,6 @@ function SortingProducts() {
         <h1 className="text-3xl mb-6">Products for You</h1>
         <div className="w-full flex gap-5">
           <div>
-            <Relevance />
             <Filter />
           </div>
           <ProductList />

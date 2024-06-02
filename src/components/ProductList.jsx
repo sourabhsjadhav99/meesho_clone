@@ -16,13 +16,13 @@ function ProductList() {
     dispatch(fetchProducts(selectedCategories));
   }, [dispatch, selectedCategories]);
 
-  console.log(data)
+  // console.log(data)
   return (
     <div className="w-full">
       {!loading ? (
         <div className="flex flex-wrap gap-6">
           {data.length > 0 ? (
-            data.map((item, index) => <ProductCard key={index} data={item} />)
+            data?.map((item, index) => <ProductCard key={index} data={item} />)
           ) : (
             <h1 className="text-2xl">Sorry, Results not found!</h1>
           )}

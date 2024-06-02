@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { RxDoubleArrowRight } from "react-icons/rx";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { FaRupeeSign } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
@@ -9,27 +9,29 @@ import Img from "../../components/Img";
 import style from "./singleProduct.module.css";
 import { addToCart } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
-import productSlice from "../../redux/productSlice";
 function SingleProduct() {
   const { id } = useParams();
   const { data, loading } = useFetch(`/products/${id}`);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [clickedIndex, setClickedIndex] = useState(0);
-    const dispatch = useDispatch();
+  let navigate = useNavigate()
+  const dispatch = useDispatch();
   const handleAddToCart = () => {
-    dispatch(addToCart(productSlice));
+    dispatch(addToCart(data));
+    navigate("/cart")
   };
-  console.log(loading);
+
   return (
     <div className="flex justify-center my-10 ">
       {data ? (
         <div className=" w-[70%] flex   gap-10 ">
           <div className="flex w-[40%]">
             <div className="w-[12%] flex flex-col gap-2">
-              {data.images?.map((image, index) => {
+              {data?.images?.map((image, index) => {
                 return (
                   <Img
                     src={image}
+                    key={index}
                     alt=""
                     className={`w-[90%] h-[60px] p-1 border rounded ${
                       clickedIndex === index ? "border-[#9F2089]" : ""
@@ -45,7 +47,7 @@ function SingleProduct() {
             <div className="w-[88%]  flex flex-col  gap-10">
               <div className="border flex justify-center p-1 rounded w-full h-[450px] ">
                 <Img
-                  src={`${data.images[currentIndex]}`}
+                  src={`${data?.images[currentIndex]}`}
                   className="w-full h-full"
                 />
               </div>
@@ -68,13 +70,13 @@ function SingleProduct() {
             <div className="border-2 p-3 flex flex-col rounded gap-5">
               <p className="text-[#8B8BA3] text-lg font-semibold">
                 {" "}
-                {data.title}.
+                {data?.title}.
               </p>
               <div className="flex items-center flex-wrap gap-2">
                 <b className="text-2xl  flex items-center">
                   {" "}
                   <FaRupeeSign />
-                  {parseInt(data.price * 50)}
+                  {parseInt(data?.price * 50)}
                 </b>
                 <del className="text-gray-300 flex items-center">
                   <div className="text-md">
@@ -82,13 +84,13 @@ function SingleProduct() {
                   </div>
                   <p className="text-md">
                     {parseInt(
-                      data.price * 50 * (1 + data.discountPercentage / 100)
+                      data?.price * 50 * (1 + data?.discountPercentage / 100)
                     )}
                   </p>
                 </del>
-                {data.discountPercentage ? (
+                {data?.discountPercentage ? (
                   <p className="text-green-500 ">
-                    {Math.ceil(data.discountPercentage)}% off
+                    {Math.ceil(data?.discountPercentage)}% off
                   </p>
                 ) : (
                   <div>onwards</div>
@@ -97,18 +99,18 @@ function SingleProduct() {
               <div className="flex  items-baseline gap-2">
                 <div
                   className={`flex px-2 justify-between items-center text-white w-[50px] ${
-                    data.rating.toFixed(1) <= 2.5
+                    data?.rating.toFixed(1) <= 2.5
                       ? "bg-red-500"
-                      : data.rating.toFixed(1) <= 3.5
+                      : data?.rating.toFixed(1) <= 3.5
                       ? "bg-orange-400"
                       : "bg-green-500"
                   } border rounded-2xl `}
                 >
-                  <p>{data.rating.toFixed(1)}</p>
+                  <p>{data?.rating.toFixed(1)}</p>
                   <FaStar />
                 </div>
                 <small className="text-[#8B8BA3]">
-                  {data.reviews.length} Reviews
+                  {data?.reviews.length} Reviews
                 </small>
               </div>
               <div>
@@ -121,49 +123,52 @@ function SingleProduct() {
             <div className="border-2 rounded flex flex-col gap-5 p-3">
               <h3 className="font-bold text-lg">Product Details:</h3>
               <ul className="text-[#8B8BA3] font-semibold list-disc ml-4">
-                <li>Name: {data.title}</li>
-                <li>Brand: {data.brand} </li>
-                <li>Warranty: {data.warrantyInformation}</li>
-                <li>Shipping Information: {data.shippingInformation}</li>
-                <li>Return Policy: {data.returnPolicy} </li>
-                <li>{data.description}</li>
+                <li>Name: {data?.title}</li>
+                <li>Brand: {data?.brand} </li>
+                <li>Warranty: {data?.warrantyInformation}</li>
+                <li>Shipping Information: {data?.shippingInformation}</li>
+                <li>Return Policy: {data?.returnPolicy} </li>
+                <li>{data?.description}</li>
               </ul>
             </div>
             <div className="border-2 rounded p-3">
               <div className="flex items-baseline gap-2">
                 <div
                   className={`flex px-2 justify-between items-center   text-3xl ${
-                    data.rating.toFixed(1) <= 2.5
+                    data?.rating.toFixed(1) <= 2.5
                       ? "text-red-500"
-                      : data.rating.toFixed(1) <= 3.5
+                      : data?.rating.toFixed(1) <= 3.5
                       ? "text-orange-400"
                       : "text-green-600"
                   }`}
                 >
-                  <p>{data.rating.toFixed(1)}</p>
+                  <p>{data?.rating.toFixed(1)}</p>
                   <div className="text-xl">
                     <FaStar />
                   </div>
                 </div>
-                <p className="text-[#8B8BA3]">{data.reviews.length} Reviews</p>
+                <p className="text-[#8B8BA3]">{data?.reviews.length} Reviews</p>
               </div>
-              {data.reviews.map((review) => {
+              {data?.reviews?.map((review, index) => {
                 return (
-                  <div className="border rounded p-2 my-2 text-[#8B8BA3] font-semibold">
+                  <div
+                    className="border rounded p-2 my-2 text-[#8B8BA3] font-semibold"
+                    key={index}
+                  >
                     <p>Reviewer Name: {review.reviewerName}</p>
                     <p>Reviewer Email: {review.reviewerEmail}</p>
 
                     <div className="flex items-baseline gap-2">
                       <div
                         className={`flex px-2 justify-between items-center text-white w-[50px] ${
-                          data.rating.toFixed(1) <= 2.5
+                          data?.rating.toFixed(1) <= 2.5
                             ? "bg-red-500"
-                            : data.rating.toFixed(1) <= 3.5
+                            : data?.rating.toFixed(1) <= 3.5
                             ? "bg-orange-400"
                             : "bg-green-500"
                         } border rounded-2xl `}
                       >
-                        <p>{data.rating.toFixed(1)}</p>
+                        <p>{data?.rating.toFixed(1)}</p>
                         <FaStar />
                       </div>
                       <p>
