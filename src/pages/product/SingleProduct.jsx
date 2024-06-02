@@ -7,11 +7,18 @@ import { FaRupeeSign } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import Img from "../../components/Img";
 import style from "./singleProduct.module.css";
+import { addToCart } from "../../redux/cartSlice";
+import { useDispatch } from "react-redux";
+import productSlice from "../../redux/productSlice";
 function SingleProduct() {
   const { id } = useParams();
   const { data, loading } = useFetch(`/products/${id}`);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [clickedIndex, setClickedIndex] = useState(0);
+    const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart(productSlice));
+  };
   console.log(loading);
   return (
     <div className="flex justify-center my-10 ">
@@ -37,10 +44,16 @@ function SingleProduct() {
             </div>
             <div className="w-[88%]  flex flex-col  gap-10">
               <div className="border flex justify-center p-1 rounded w-full h-[450px] ">
-                <Img src={`${data.images[currentIndex]}`} className="w-full h-full"/>
+                <Img
+                  src={`${data.images[currentIndex]}`}
+                  className="w-full h-full"
+                />
               </div>
               <div className="w-full flex gap-5 border-b-2  pb-5">
-                <button className="flex items-center justify-center gap-2 font-semibold text-lg w-[45%] border text-[#9F2089] border-[#9F2089] p-2 rounded">
+                <button
+                  className="flex items-center justify-center gap-2 font-semibold text-lg w-[45%] border text-[#9F2089] border-[#9F2089] p-2 rounded"
+                  onClick={handleAddToCart}
+                >
                   <AiOutlineShoppingCart />
                   Add to Cart
                 </button>
