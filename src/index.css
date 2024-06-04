@@ -5,3 +5,13 @@
     filter: blur(5px);
     transition: filter 0.3s ease;
   }
+  .sidebar.open {
+    display: block;
+    transform: translateX(0);
+  }
+  .sidebar-body {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
