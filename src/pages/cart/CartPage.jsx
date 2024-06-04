@@ -21,7 +21,7 @@ function CartPage() {
   const [editingItemId, setEditingItemId] = useState(null);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log("key is" + process.env.RAZORPAY_KEY);
   const handleIncreaseQuantity = (id) => {
     dispatch(increaseQuantity(id));
   };
@@ -56,6 +56,7 @@ function CartPage() {
     0
   );
 
+  console.log(totalCost)
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -64,7 +65,11 @@ function CartPage() {
     <div className="flex justify-center w-[100%] relative">
       {cartItems.length > 0 ? (
         <div className={`w-[60%] `}>
-          <div className={`flex justify-center w-[100%] gap-8 content-wrapper ${isOpen ? "blurred" : ""}`}>
+          <div
+            className={`flex justify-center w-[100%] gap-8 content-wrapper ${
+              isOpen ? "blurred" : ""
+            }`}
+          >
             <div className="w-[60%]">
               <div className="flex flex-col gap-3">
                 <h3 className="text-xl font-semibold">Product Details</h3>

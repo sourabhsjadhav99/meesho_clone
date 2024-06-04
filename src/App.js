@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import CartPage from './pages/cart/CartPage';
 import AddressForm from './pages/cart/AddressForm';
-import Payment from './pages/cart/Payment';
+import Payment from './pages/cart/PaymentPage';
 import Summary from './pages/cart/Summary';
 
 function App() {
@@ -15,9 +15,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/:id" element={<SingleProduct />} />
-        {/* <Route path="/address" element={<AddressForm />} /> */}
         <Route path="/payment" element={<Payment />} />
         <Route path="/summary" element={<Summary />} />
 

@@ -206,7 +206,8 @@ function AddressForm({ isOpen, toggleSidebar }) {
     onSubmit: (values) => {
       // Save address information to state or localStorage
       console.log(values);
-      // navigate("/payment");
+      localStorage.setItem("address", JSON.stringify(values));
+      navigate("/payment");
     },
   });
 
