@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Summary() {
   const cartItems = useSelector((state) => state.cart.items);
+  const buyNowItems = useSelector((state) => state.cart.buyNowItem);
   const address = JSON.parse(localStorage.getItem("address"));
   let navigate = useNavigate();
   const totalCost = cartItems.reduce(

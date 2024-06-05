@@ -40,7 +40,7 @@ function PaymentPage() {
         }
 
         const options = {
-          key: "rzp_test_0A7hQeX69z0TCU",
+          key:  process.env.REACT_APP_RAZORPAY_KEY,
           amount: parseInt(totalCost) * 100, // Amount in paise
           currency: "INR",
           name: "Meesho",
