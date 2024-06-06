@@ -7,7 +7,7 @@ function CategoryPage() {
   return (
     <div>
       <Navbar />
-      <SortingProducts />
+      <SortingProducts isCategory={true}/>
       <Footer />
     </div>
   );
