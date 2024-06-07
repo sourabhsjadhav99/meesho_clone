@@ -1,25 +1,19 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { FaRupeeSign } from "react-icons/fa";
-import { increaseQuantity, decreaseQuantity } from "../../redux/cartSlice";
-import { useNavigate } from "react-router-dom";
-
 import Img from "../../components/Img";
-
 import safetyImg from "../../assets/safety.png";
 import AddressForm from "../../components/AddressForm";
 import EditSideBar from "../../components/EditSidebar";
 import meeshoLogo from "../../assets/meesho.png";
+import { useSelector } from "react-redux";
 
-function PayNowPage() {
-  const dispatch = useDispatch();
-  const buyNow = useSelector((state) => state.cart.buyNowItem);
+function BuyNowPage() {
+  const buyNowFirst = useSelector((state) => state.cart.buyNowItem)
+  console.log(buyNowFirst);
   const [editingItemId, setEditingItemId] = useState(null);
-  const navigate = useNavigate();
   const [isOpenAddress, setIsOpenAddress] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
 
-  let buyNowFirst = buyNow.slice(-1);
   const handleEditClick = (id) => {
     setEditingItemId(id);
   };
@@ -28,88 +22,12 @@ function PayNowPage() {
     (total, item) => total + item.price * item.quantity * 50,
     0
   );
+  
   const toggleAddressSidebar = () => {
     setIsOpenAddress(!isOpenAddress);
   };
   const toggleEditSidebar = () => {
     setIsOpenEdit(!isOpenEdit);
-  };
-
-  const handleAddressSubmit = () => {
-    const address = JSON.parse(localStorage.getItem("address"));
-    if (address) {
-      handlePayment();
-    } else {
-      alert("Address information is missing.");
-      navigate("/address");
-    }
-  };
-
-  const handlePayment = async () => {
-    const loadScript = (src) => {
-      return new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = src;
-        script.onload = () => {
-          resolve(true);
-        };
-        script.onerror = () => {
-          reject(new Error("Razorpay SDK failed to load."));
-        };
-        document.body.appendChild(script);
-      });
-    };
-
-    try {
-      const res = await loadScript(
-        "https://checkout.razorpay.com/v1/checkout.js"
-      );
-
-      if (!res) {
-        alert("Razorpay SDK failed to load. Are you online?");
-        return;
-      }
-
-      const address = JSON.parse(localStorage.getItem("address"));
-      const options = {
-        key: process.env.REACT_APP_RAZORPAY_KEY,
-        amount: parseInt(totalCost) * 100, // Amount in paise
-        currency: "INR",
-        name: "Meesho",
-        description: "Test Transaction",
-        image: "path/to/meesho_logo.png", // Add your logo here
-        handler: function (response) {
-          console.log("Payment Success:", response);
-          alert(
-            `Payment successful! Payment ID: ${response.razorpay_payment_id}`
-          );
-          navigate("/summary"); // Redirect to a success page
-        },
-        prefill: {
-          name: address.name,
-          contact: address.mobile,
-        },
-        notes: {
-          address: `${address.house}, ${address.road}, ${address.city}, ${address.state}, ${address.pincode}`,
-        },
-        theme: {
-          color: "#9f2089",
-        },
-      };
-
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.on("payment.failed", function (response) {
-        console.error("Payment Failed:", response.error);
-        alert(`Payment failed! Reason: ${response.error.reason}`);
-        console.log("Navigating back to previous page...");
-        navigate(-1);
-      });
-
-      paymentObject.open();
-    } catch (error) {
-      console.error("Error in handlePayment:", error);
-      alert(error.message);
-    }
   };
 
   return (
@@ -241,7 +159,6 @@ function PayNowPage() {
             <AddressForm
               isOpenAddress={isOpenAddress}
               toggleAddressSidebar={toggleAddressSidebar}
-              onSave={handleAddressSubmit}
             />
             <EditSideBar
               isOpenEdit={isOpenEdit}
@@ -256,4 +173,4 @@ function PayNowPage() {
   );
 }
 
-export default PayNowPage;
+export default BuyNowPage;
