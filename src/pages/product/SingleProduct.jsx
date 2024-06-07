@@ -11,7 +11,7 @@ import { addToCart, buyNow } from "../../redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Footer from "../../components/Footer";
 
 function SingleProduct() {
   const { id } = useParams();
@@ -45,16 +45,11 @@ function SingleProduct() {
     navigate("/pay");
   };
 
-  const showToastMessage = () => {
-    toast.success("Product added to cart", {
-      position: toast.POSITION.BOTTOM_CENTER,
-    });
-  };
   return (
     <>
       <div className="flex justify-center h-[100%] ">
         {data ? (
-          <div className=" w-[70%] flex   gap-10 ">
+          <div className=" w-[70%] flex   gap-10 mt-5 mb-12">
             <div className="flex w-[45%] gap-2">
               <div className="w-[12%] flex flex-col gap-2">
                 {data?.images?.map((image, index) => {
@@ -95,8 +90,8 @@ function SingleProduct() {
                       className="flex items-center justify-center gap-2 font-semibold text-lg w-[45%] border text-[#9F2089] border-[#9F2089] p-2 rounded"
                       onClick={handleAddToCart}
                     >
-                  <FaShoppingCart />
-                     Go to Cart
+                      <FaShoppingCart />
+                      Go to Cart
                     </button>
                   )}
                   <button
@@ -251,8 +246,10 @@ function SingleProduct() {
             </div>
           </div>
         )}
+
         <ToastContainer />
       </div>
+      <Footer />
     </>
   );
 }

@@ -148,7 +148,7 @@ function CartPage() {
           <Img src={meeshoLogo} className="w-[156px] h-[36px]" />
         </div>
       </header>
-      <div className="flex justify-center w-[100%] relative my-5">
+      <div className="flex justify-center w-[100%] min-h-screen relative ">
         {cartItems.length > 0 ? (
           <div className={`w-[60%] `}>
             <div

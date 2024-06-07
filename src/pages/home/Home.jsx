@@ -7,8 +7,8 @@ import Navbar from "../../components/Header/Header";
 
 function Home() {
   return (
-    <div>
-      {/* <Navbar /> */}
+    <div className="flex flex-col gap-10">
+      <Navbar/>
       <Cover />
       <Categories />
       <SortingProducts />
