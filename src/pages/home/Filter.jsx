@@ -113,17 +113,17 @@ function Filter({isCategory}) {
 
 
   return (
-    <div>
-      <div className="flex flex-col items-center w-[300px] rounded text-[#353543] mb-2">
+    <div className=" md:w-[300px]  flex md:flex-col ">
+      <div className="flex flex-col items-center md:w-[100%] w-1/3 rounded text-[#353543]   mb-2">
         <button
           onClick={() => {
             setIsOpen((prev) => !prev);
           }}
-          className="w-full flex justify-between p-3 items-center border-2 border-transperent active:border-gray-500 duration-300 rounded"
+          className="w-full flex justify-between p-1 md:p-3 items-center border-0 md:border-2 border-transperent active:border-gray-500 duration-300 rounded"
         >
           <div>
-            <span className="text-gray-400">Sort by : </span>
-            <span className="text-black font-medium">{sortOption}</span>
+            <span className="text-gray-400 text-xs md:text-lg">Sort by : </span>
+            <span className="text-black font-medium text-xs md:text-lg block md:inline">{sortOption}</span>
           </div>
           <div className="text-2xl">
             {!isOpen ? (
@@ -195,8 +195,8 @@ function Filter({isCategory}) {
           </div>
         )}
       </div>
-      <div className="flex flex-col items-start p-1 w-[300px] border-2 rounded my-2">
-        <div className="w-full flex justify-between p-2">
+      <div className="flex justify-between md:border-2 rounded md:flex-col md:items-start p-1 gap-1 md:w-[300px] w-2/3  my-2">
+        <div className="w-full justify-between hidden md:flex p-2">
           <div>
             <p className="font-medium text-lg">FILTERS</p>
             <small>1000+ Products</small>
@@ -210,8 +210,8 @@ function Filter({isCategory}) {
           )}
         </div>
 
-        <hr className={`m-4 w-[93%]  border border-gray-300 ${isCategory && "hidden"}`} />
-        <div className={`relative flex flex-col items-start p-1 w-full rounded text-[#353543] ${isCategory && "hidden"}`}>
+        <hr className={`m-4 w-[93%]  border border-gray-300 ${isCategory && "hidden"} md:hidden`} />
+        <div className={`relative flex flex-col items-start p-1 w-[100%] rounded text-[#353543] ${isCategory && "hidden"}`}>
           <button
             onClick={() => setIsCategoryOpen((prev) => !prev)}
             className="w-full flex justify-between items-center"
@@ -272,11 +272,11 @@ function Filter({isCategory}) {
             </div>
           )}
         </div>
-        <hr className="m-4 w-[93%]  border border-gray-300" />
-        <div className="relative flex flex-col items-center w-full rounded text-[#353543]">
+        <hr className="m-4 w-[93%]  border border-gray-300 hidden md:block" />
+        <div className="relative flex flex-col items-center  w-[50%] md:w-[100%] rounded text-[#353543]">
           <button
             onClick={() => setIsPricesOpen((prev) => !prev)}
-            className="w-full flex justify-between p-1 items-center"
+            className="w-full flex justify-between p-1 items-center border-r-2 md:border-0"
           >
             <div>
               <span className="text-black text-lg font-medium">Prices</span>
@@ -309,11 +309,11 @@ function Filter({isCategory}) {
           )}
         </div>
 
-        <hr className="m-4 w-[93%]  border border-gray-300" />
-        <div className="relative flex flex-col items-center w-full rounded text-[#353543]">
+        <hr className="m-4 w-[93%]  border border-gray-300 hidden md:block" />
+        <div className="relative flex flex-col items-center  w-[50%] md:w-[100%] rounded text-[#353543]">
           <button
             onClick={() => setIsRatingsOpen((prev) => !prev)}
-            className="w-full flex justify-between p-1 items-center"
+            className="w-full flex justify-between p-1 items-center "
           >
             <div>
               <span className="text-black text-lg font-medium">Ratings</span>
