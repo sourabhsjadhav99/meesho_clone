@@ -1,5 +1,6 @@
 import React from "react";
 import cover from "../../assets/cover.webp";
+import Img from "../../components/Img"
 
 function Cover() {
   const handleButtonClick = () => {
@@ -7,14 +8,14 @@ function Cover() {
   };
 
   return (
-    <div className="w-full  flex flex-col items-center gap-14 justify-center my-12">
-      <div className="flex w-[75%] h-[350px] justify-between rounded-md">
-        <div className="w-1/2 flex flex-col justify-between items-start rounded-l-md bg-[#F8F8FF] p-5">
-          <div className="text-5xl font-semibold text-[#353543]">
+    <div className="w-full  flex flex-col items-center gap-14 justify-center my-5 md:my-12 p-2">
+      <div className="flex flex-col md:flex-row w-[100%] md:w-[75%] h-[350px] justify-between rounded-md ">
+        <div className="w-[100%] md:w-1/2 flex flex-col justify-between items-start md:rounded-l-md rounded-t-md bg-[#F8F8FF] p-5 gap-2">
+          <div className="text-3xl md:text-5xl font-semibold text-[#353543]">
             <h1>Lowest Prices</h1>
             <h1>Best Quality Shopping</h1>
           </div>
-          <div className="flex justify-between p-2 rounded-md text-[#353543] font-semibold w-[80%] bg-white">
+          <div className="flex justify-between p-2 rounded-md text-[#353543] font-semibold w-[100%] md:w-[80%] bg-white">
             <div className="flex items-center gap-2">
               <div className="rounded-full border-gray-200 border-2">
                 <img
@@ -53,7 +54,7 @@ function Cover() {
               </p>
             </div>
           </div>
-          <div className="w-[60%]">
+          <div className="w-[100%] md:w-[60%] ">
             <button
               className="w-full flex justify-evenly bg-[#9F2089] p-3 text-lg text-white rounded-md font-bold"
               onClick={handleButtonClick}
@@ -69,8 +70,8 @@ function Cover() {
           </div>
         </div>
 
-        <div className="w-1/2">
-          <img src={cover} alt="cover" className="w-full h-full rounded-r-md" />
+        <div className="w-[100%] md:w-1/2">
+          <Img src={cover} alt="cover" className="w-full h-full md:rounded-r-md rounded-b-md" />
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ function Home() {
   return (
     <div>
     
-      <div className={focusonsearch?"hidden":""}><Cover /> <Categories /></div>
+      {/* <div className={focusonsearch?"hidden":""}><Cover /> <Categories /></div> */}
       
     <div className="flex flex-col gap-10">
       {/* <Navbar/> */}
