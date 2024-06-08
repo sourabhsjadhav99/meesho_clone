@@ -19,11 +19,11 @@ function Home() {
     
       {/* <div className={focusonsearch?"hidden":""}><Cover /> <Categories /></div> */}
       
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-5">
       {/* <Navbar/> */}
       <Cover />
       <Categories />
-      <SortingProducts />
+      <SortingProducts isCategory={false}/>
       <Footer />
     </div>
     </div>
