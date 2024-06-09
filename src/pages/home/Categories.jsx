@@ -324,7 +324,7 @@ function Categories() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-10 justify-center mt-[15%] md:mt-0 p-2">
+    <div className="w-full flex flex-col items-center gap-5 md:gap-10 justify-center  p-2">
       <div className="flex justify-center">
         <h1 className="text-gray-600 text-xl md:text-2xl lg:text-4xl font-bold">
           Top Categories to choose from

@@ -11,9 +11,9 @@ function Cover() {
   };
 
   return (
-    <div className="w-full h-[400px] flex flex-col items-center justify-center my-5 md:my-8 p-2">
-      <div className="flex flex-col md:flex-row w-[100%]  md:w-11/12 lg:w-9/12 h-auto md:h-[550px] h-full justify-between rounded-md">
-        <div className="w-[100%] md:w-[50%] h-auto md:h-[350px] lg:h-[400px] flex flex-col justify-between items-start md:rounded-l-md rounded-t-md bg-[#F8F8FF] p-5 gap-3 md:gap-2">
+    <div className="w-full md:h-[400px] flex flex-col items-center justify-center my-5 md:my-8 p-2 ">
+      <div className="flex flex-col md:flex-row w-[100%]  md:w-11/12 lg:w-9/12  justify-between ">
+        <div className="w-[100%] md:w-[50%] h-auto md:h-[350px] lg:h-[400px] flex flex-col justify-between items-start  bg-[#F8F8FF] p-5 gap-3 md:gap-2 rounded-md">
           <div className="text-2xl md:text-3xl lg:text-5xl font-semibold text-[#353543]">
             <h1>Lowest Prices</h1>
             <h1>Best Quality Shopping</h1>
@@ -57,7 +57,7 @@ function Cover() {
               </p>
             </div>
           </div>
-          <div className="w-[100%] md:w-[90%] lg:w-[60%] ">
+          <div className="w-[100%] md:w-[80%] lg:w-[60%] ">
             <button
               className="w-full flex justify-evenly bg-[#9F2089] p-3 text-lg text-white rounded-md font-bold"
               onClick={handleButtonClick}
@@ -72,11 +72,11 @@ function Cover() {
             </button>
           </div>
         </div>
-        <div className="w-[100%] md:w-[50%] h-auto md:h-[350px] lg:h-[400px] lg:h-[400px]">
+        <div className="w-[100%] md:w-[50%] h-auto md:h-[350px] lg:h-[400px]">
           <Img
             src={cover}
             alt="cover"
-            className="w-[100%] h-auto md:h-[350px] lg:h-[400px] rounded-br-md  md:rounded-r-md "
+            className="w-screen h-[250px] md:h-[350px] lg:h-[400px] rounded-b-md md:rounded-r-md"
           />
         </div>
       </div>
@@ -85,4 +85,3 @@ function Cover() {
 }
 
 export default Cover;
-

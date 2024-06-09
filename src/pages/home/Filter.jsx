@@ -218,16 +218,6 @@ function Filter({ isCategory }) {
             )}
           </div>
 
-          {/* <hr
-            className={`m-4 w-[93%]  border border-gray-300 ${
-              isCategory && "hidden"
-            } md:hidden`}
-          /> */}
-          {/* <div
-            className={`relative w-full flex-col items-start p-1 rounded text-[#353543] md:flex ${
-              isCategory && "hidden"
-            } hidden`}
-          > */}
           <div
             className={`relative w-full hidden ${
               isCategory ? "hidden" : "md:flex"
@@ -370,68 +360,82 @@ function Filter({ isCategory }) {
           </div>
         </div>
       </div>
-      <div
-        className={`relative w-full flex border-2 rounded-md ${
-          isCategory ? "hidden" : "md:hidden"
-        } flex-col items-start p-1 rounded text-[#353543]`}
-      >
-        <button
-          onClick={() => setIsCategoryOpen((prev) => !prev)}
-          className="w-full flex justify-between items-center"
+      <div className="flex justify-between">
+        <div
+          className={`relative justify-center min-w-[80%] flex border-2 rounded-md ${
+            isCategory ? "hidden" : "md:hidden"
+          } flex-col items-start p-1 rounded text-[#353543]`}
         >
-          <div>
-            <span className="text-black md:text-lg font-medium">Category</span>
-          </div>
-          <div className="text-2xl">
-            {!isCategoryOpen ? (
-              <MdOutlineKeyboardArrowDown />
-            ) : (
-              <MdOutlineKeyboardArrowUp />
-            )}
-          </div>
-        </button>
-
-        {isCategoryOpen && (
-          <div className="w-full">
-            <div className="flex items-center justify-between border border-gray-300 rounded-md my-1">
-              <div className="text-xl text-gray-300 p-2">
-                <FiSearch />
-              </div>
-              <div className="w-[90%] ">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full mb-2 outline-none"
-                />
-              </div>
+          <button
+            onClick={() => setIsCategoryOpen((prev) => !prev)}
+            className="w-full flex justify-between items-center"
+          >
+            <div>
+              <span className="text-black md:text-lg font-medium">
+                Category
+              </span>
             </div>
+            <div className="text-2xl">
+              {!isCategoryOpen ? (
+                <MdOutlineKeyboardArrowDown />
+              ) : (
+                <MdOutlineKeyboardArrowUp />
+              )}
+            </div>
+          </button>
 
-            <div className="w-full flex flex-col gap-2 items-start rounded font-medium">
-              {filteredOptions.map((option) => (
-                <label
-                  key={option}
-                  className="p-1 w-full rounded-xl flex items-center gap-2"
-                >
+          {isCategoryOpen && (
+            <div className="w-full">
+              <div className="flex items-center justify-between border border-gray-300 rounded-md my-1">
+                <div className="text-xl text-gray-300 p-2">
+                  <FiSearch />
+                </div>
+                <div className="w-[90%] ">
                   <input
-                    type="checkbox"
-                    checked={selectedCategories.includes(option)}
-                    onChange={() => toggleCheckbox(option)}
-                    className="h-4 w-4 border-2 border-gray-300 rounded checked:bg-green-500 focus:ring-0"
+                    type="text"
+                    placeholder="Search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full mb-2 outline-none"
                   />
-                  <span
-                    className={`${
-                      selectedCategories.includes(option)
-                        ? "font-bold text-black"
-                        : "font-medium text-gray-500"
-                    }`}
+                </div>
+              </div>
+
+              <div className="w-full flex flex-col gap-2 items-start rounded font-medium">
+                {filteredOptions.map((option) => (
+                  <label
+                    key={option}
+                    className="p-1 w-full rounded-xl flex items-center gap-2"
                   >
-                    {option.charAt(0).toUpperCase() + option.slice(1)}
-                  </span>
-                </label>
-              ))}
+                    <input
+                      type="checkbox"
+                      checked={selectedCategories.includes(option)}
+                      onChange={() => toggleCheckbox(option)}
+                      className="h-4 w-4 border-2 border-gray-300 rounded checked:bg-green-500 focus:ring-0"
+                    />
+                    <span
+                      className={`${
+                        selectedCategories.includes(option)
+                          ? "font-bold text-black"
+                          : "font-medium text-gray-500"
+                      }`}
+                    >
+                      {option.charAt(0).toUpperCase() + option.slice(1)}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
+          )}
+        </div>
+        {hasSelectedFilters && (
+          <div className={`${isCategory ? "hidden" : "md:hidden"}`}>
+            <button
+              onClick={clearAll}
+              className="font-bold text-xs text-[#9F2089] w-[20%]"
+            >
+              CLEAR ALL
+            </button>
           </div>
         )}
       </div>

@@ -27,9 +27,6 @@ function ProductList() {
     dispatch(fetchProducts({ categories: selectedCategories, sort: sortOption,searchQuery ,price:selectedPrices, ratings:selectedRatings }));
   }, [dispatch, selectedCategories, sortOption,searchQuery,selectedPrices, selectedRatings]);
 
-  // useEffect(() => {
-  //   console.log(data);  // Debugging line to check the fetched data
-  // }, [data]);
 
   useEffect(() => {
     console.log(data); // Debugging line to check the fetched data

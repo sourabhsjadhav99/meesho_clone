@@ -26,7 +26,7 @@ function ProductCard({ data, loading }) {
           </div>
           <div className="flex flex-col p-2 gap-3">
             <div>
-              <p>{data?.title}</p>
+              <p className="truncate whitespace-nowrap overflow-hidden">{data?.title}</p>
             </div>
             <div className="flex items-center flex-wrap gap-2">
               <b className="text-lg  flex items-center">

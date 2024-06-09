@@ -10,7 +10,7 @@ function SortingProducts({isCategory}) {
           <div>
             <Filter isCategory={isCategory}/>
           </div>
-          <div>
+          <div >
             <ProductList />
           </div>
         </div>
